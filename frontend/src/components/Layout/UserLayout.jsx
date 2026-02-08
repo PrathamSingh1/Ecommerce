@@ -6,6 +6,7 @@ const UserLayout = () => {
     <>
     {/* Header */}
     <Header />
+    
     </>
   )
 }
