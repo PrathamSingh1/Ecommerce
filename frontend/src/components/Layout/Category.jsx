@@ -4,7 +4,7 @@ import NewArrivals from '../Products/NewArrivals'
 
 const Category = () => {
   return (
-    <div className='h-full w-full bg-background text-foreground pt-20'>
+    <div className='w-full bg-background text-foreground pt-20'>
         <h2 className='text-3xl font-semibold pl-10'>Our Category</h2>
         <div className='flex items-center justify-center pl-10 gap-10 mt-10'>
             <div className='h-130 w-100 rounded-4xl'>
