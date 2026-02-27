@@ -6,12 +6,11 @@ import Navbar from '../Layout/Navbar'
 const Header = () => {
  
   return (
-    <div className='p-8'>
+    <div className='px-8 pt-8 pb-3  bg-background text-foreground'>
         {/* Topbar */}
         <Topbar />
         {/* Navbar */}
         <Navbar />
-        {/* Cart Drawer */}
     </div>
   )
 }
