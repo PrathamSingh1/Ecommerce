@@ -6,7 +6,7 @@
 
 
 :root {
-  --background: var(--color-neutral-50);
+  --background: var(--color-neutral-200);
   --foreground: var(--color-neutral-800);
   --font-inter: "Inter", sans-serif;
 }
@@ -15,6 +15,16 @@
 .dark {
   --background: var(--color-neutral-800);
   --foreground: var(--color-neutral-50);
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 @theme inline {

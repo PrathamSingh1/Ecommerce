@@ -47,7 +47,7 @@ const Topbar = () => {
                     <HiOutlineShoppingBag className='h-4 w-4' />
                     <div className='text-xs absolute px-[5px] py-[0.2px] rounded-full -bottom-[2px] -right-1 bg-neutral-700 text-neutral-200'>2</div>
                     </div>
-                    <button onClick={handleThemeChange} className='relative p-4 border border-neutral-200 dark:border-neutral-800 rounded-md flex items-center justify-center cursor-pointer'>
+                    <button onClick={handleThemeChange} className='relative p-4 border border-neutral-300 dark:border-neutral-700 rounded-md flex items-center justify-center cursor-pointer'>
                       <IoIosSunny className='absolute inset-0 size-5 shrink-0 dark:scale-0 scale-100 dark:rotate-45 transition-all duration-300 m-auto' />
                       <IoMoon className='absolute inset-0 size-5 shrink-0 dark:scale-100 scale-0 dark:rotate-0 rotate-45 transition-all duration-300 m-auto' />
                     </button>
