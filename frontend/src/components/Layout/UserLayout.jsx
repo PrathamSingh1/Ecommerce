@@ -62,7 +62,7 @@ const UserLayout = () => {
   return (
     <>
       {/* Header */}
-      <Header />
+      {/* <Header /> */}
       {/* Main */}
       <Home />
       {/* Category */}
@@ -78,7 +78,7 @@ const UserLayout = () => {
           <ProductGrid products={placeholderProducts} />
         </div>
       </div>
-      <Products />
+      {/* <Products /> */}
       {/* Footer */}
       {/* <Footer /> */}
     </>
