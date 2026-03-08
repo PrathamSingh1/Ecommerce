@@ -91,7 +91,7 @@ const CollectionPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col lg:flex-row">
+    <div className="flex flex-col lg:flex-row bg-background text-foreground">
       {/* Mobile FIlter button */}
       <button
         ref={buttonRef}
