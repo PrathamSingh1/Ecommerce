@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import CollectionPage from "./pages/CollectionPage";
 import Header from "./components/Common/Header";
 import Footer from "./components/Common/Footer";
+import ProductDetails from "./components/Products/ProductDetails";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/collections/:collection" element={<CollectionPage />} />
+          <Route path="product/:id" element={<ProductDetails />} />
         </Routes>
         <Footer />
       </BrowserRouter>
