@@ -28,7 +28,7 @@ const Footer = () => {
               required
             />
             <button
-              className="bg-neutral-900 text-neutral-500  dark:text-neutral-300 cursor-pointer px-6 py-3 text-sm rounded-r-md hover:bg-gray-800 dark:hover:bg-neutral-700 transition-all"
+              className="bg-neutral-900 text-neutral-300  dark:text-neutral-300 cursor-pointer px-6 py-3 text-sm rounded-r-md hover:bg-gray-800 dark:hover:bg-neutral-700 transition-all"
               type="submit"
             >
               Subscribe
