@@ -120,33 +120,31 @@ async function updateProduct(req, res) {
 // route DELETE /api/products/:id
 // delete product by id
 // access admin
-// async function deleteProduct(req, res) {
-//   try {
-//     // find the product by id
-//     const id = req.params.id;
+async function deleteProduct(req, res) {
+  try {
+    // find the product by id
+    const id = req.params.id;
 
-//     const product = await productModel.findById(id);
+    const product = await productModel.findById(id);
 
-//     if (product) {
-//       // remove from db
-//       await product.deleteOne();
-//       res.json({
-//         message: "Product removed",
-//       });
-//     } else {
-//       res.status(404).json({
-//         message: "Product not found",
-//       });
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json({
-//       message: "Server Error",
-//     });
-//   }
-// }
-
-async function 
+    if (product) {
+      // remove from db
+      await product.deleteOne();
+      res.json({
+        message: "Product removed",
+      });
+    } else {
+      res.status(404).json({
+        message: "Product not found",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Server Error",
+    });
+  }
+}
 
 module.exports = {
   addProduct,
