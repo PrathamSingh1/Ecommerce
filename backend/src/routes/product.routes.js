@@ -20,5 +20,6 @@ router.delete(
   adminMiddleware,
   productController.deleteProduct,
 );
+router.get("/", productController.getProduct);
 
 module.exports = router;

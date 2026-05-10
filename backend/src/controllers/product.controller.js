@@ -146,8 +146,85 @@ async function deleteProduct(req, res) {
   }
 }
 
+// route GET /api/products
+// get all products with optional query filters
+// access public
+async function getProduct(req, res) {
+  try {
+    const {
+      collection,
+      size,
+      color,
+      gender,
+      minPrice,
+      maxPrice,
+      sortBy,
+      search,
+      category,
+      material,
+      brand,
+      limit,
+    } = req.query;
+
+    let query = {};
+
+    if (collection && collection.toLocaleLowerCase() !== "all")
+      query.collections = collection;
+    if (category && category.toLocaleLowerCase() !== "all")
+      query.category = category;
+    if (material) query.material = { $in: material.split(",") };
+    if (brand) query.brand = { $in: brand.split(",") };
+    if (size) query.sizes = { $in: size.split(",") };
+    if (color) query.colors = { $in: [color] };
+    if (gender) query.gender = gender;
+
+    if (minPrice || maxPrice) {
+      query.price = {};
+      if (minPrice) query.price.$gte = Number(minPrice); // ✅ fixed typo
+      if (maxPrice) query.price.$lte = Number(maxPrice);
+    }
+
+    if (search) {
+      query.$or = [
+        { name: { $regex: search, $options: "i" } },
+        { description: { $regex: search, $options: "i" } },
+      ];
+    }
+
+    // ✅ Build a Mongoose sort string/object and use it in the query chain
+    let sort = {};
+    if (sortBy) {
+      switch (sortBy) {
+        case "priceAsc":
+          sort = { price: 1 };
+          break;
+        case "priceDesc":
+          sort = { price: -1 };
+          break;
+        case "popularity":
+          sort = { rating: -1 };
+          break;
+        default:
+          break;
+      }
+    }
+
+    // ✅ Use Mongoose's .sort() and .limit() instead of Array methods
+    const products = await productModel
+      .find(query)
+      .sort(sort)
+      .limit(Number(limit) || 0);
+
+    res.json(products);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+}
+
 module.exports = {
   addProduct,
   updateProduct,
   deleteProduct,
+  getProduct,
 };
