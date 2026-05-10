@@ -149,7 +149,7 @@ async function deleteProduct(req, res) {
 // route GET /api/products
 // get all products with optional query filters
 // access public
-async function getProduct(req, res) {
+async function getProducts(req, res) {
   try {
     const {
       collection,
@@ -222,9 +222,30 @@ async function getProduct(req, res) {
   }
 }
 
+// route GET /api/products/:id
+// get a single product by Id
+// assess public
+async function getProduct(req, res) {
+  try {
+    const product = await productModel.findById(req.params.id);
+    if (product) {
+      res.json(product);
+    } else {
+      res.status(404).json({
+        message: "Product Not Found",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Server Error ",
+    });
+  }
+}
 module.exports = {
   addProduct,
   updateProduct,
   deleteProduct,
+  getProducts,
   getProduct,
 };
