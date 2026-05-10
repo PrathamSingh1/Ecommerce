@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const userModel = require("../models/user.model");
 
 // middleware
-const isAuthenticated = async (req, res, next) => {
+const userMiddleware = async (req, res, next) => {
   let token;
 
   if (
@@ -28,4 +28,4 @@ const isAuthenticated = async (req, res, next) => {
   }
 };
 
-module.exports = { isAuthenticated };
+module.exports = { userMiddleware };

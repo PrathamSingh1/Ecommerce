@@ -1,9 +1,9 @@
 const express = require("express");
 const productController = require("../controllers/product.controller");
-const { isAuthenticated } = require("../middleware/authMiddleware");
+const { userMiddleware } = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-router.post("/", isAuthenticated, productController.addProduct);
+router.post("/", userMiddleware, productController.addProduct);
 
 module.exports = router;
