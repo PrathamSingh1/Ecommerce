@@ -22,5 +22,6 @@ router.delete(
 );
 router.get("/", productController.getProducts);
 router.get("/:id", productController.getProduct);
+router.get("/similar/:id", productController.similarProducts);
 
 module.exports = router;

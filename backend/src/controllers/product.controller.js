@@ -242,10 +242,40 @@ async function getProduct(req, res) {
     });
   }
 }
+
+// route GET /api/products/similar/:id
+// retrieve similar products based on the current product's gender and category
+// access public
+async function similarProducts(req, res) {
+  const { id } = req.params;
+  try {
+    const product = await productModel.findById(id);
+    if (!product) {
+      return res.status(404).json({
+        message: "Product Not Found",
+      });
+    }
+
+    const similarProducts = await productModel
+      .find({
+        _id: { $ne: id }, // exclude the current product id
+        gender: product.gender,
+        category: product.category,
+      })
+      .limit(4);
+
+    res.json(similarProducts);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Server Error");
+  }
+}
+
 module.exports = {
   addProduct,
   updateProduct,
   deleteProduct,
   getProducts,
   getProduct,
+  similarProducts,
 };
