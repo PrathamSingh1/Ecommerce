@@ -22,6 +22,7 @@ router.delete(
 );
 router.get("/", productController.getProducts);
 router.get("/best-seller", productController.bestSellerProducts);
+router.get("/new-arrivals", productController.newArrivalsProducts);
 router.get("/:id", productController.getProduct);
 router.get("/similar/:id", productController.similarProducts);
 

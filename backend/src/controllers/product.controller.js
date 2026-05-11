@@ -292,6 +292,25 @@ async function bestSellerProducts(req, res) {
   }
 }
 
+// route GET /api/products/new-arrivals
+// retrieve latest 8 products - Creation Date
+// access public
+async function newArrivalsProducts(req, res) {
+  try {
+    const newArrivals = await productModel
+      .find()
+      .sort({ createdAt: -1 })
+      .limit(8);
+
+    res.json(newArrivals);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Server Error",
+    });
+  }
+}
+
 module.exports = {
   addProduct,
   updateProduct,
@@ -300,4 +319,5 @@ module.exports = {
   getProduct,
   similarProducts,
   bestSellerProducts,
+  newArrivalsProducts,
 };
