@@ -2,6 +2,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const productModel = require("./models/product.model");
 const userModel = require("./models/user.model");
+const cartModel = require("./models/cart.model");
 const products = require("./data/products");
 
 // seeding data function
