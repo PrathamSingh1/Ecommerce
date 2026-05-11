@@ -21,6 +21,7 @@ router.delete(
   productController.deleteProduct,
 );
 router.get("/", productController.getProducts);
+router.get("/best-seller", productController.bestSellerProducts);
 router.get("/:id", productController.getProduct);
 router.get("/similar/:id", productController.similarProducts);
 

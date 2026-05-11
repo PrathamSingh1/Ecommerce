@@ -271,6 +271,27 @@ async function similarProducts(req, res) {
   }
 }
 
+// route GET /api/products/best-seller
+// retrieve the product with highest rating
+// access public
+async function bestSellerProducts(req, res) {
+  try {
+    const bestSeller = await productModel.findOne().sort({ rating: -1 });
+    if (bestSeller) {
+      res.json(bestSeller);
+    } else {
+      res.status(404).json({
+        message: "No Best Seller Found ",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Server Error",
+    });
+  }
+}
+
 module.exports = {
   addProduct,
   updateProduct,
@@ -278,4 +299,5 @@ module.exports = {
   getProducts,
   getProduct,
   similarProducts,
+  bestSellerProducts,
 };
